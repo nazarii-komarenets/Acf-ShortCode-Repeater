@@ -2,20 +2,21 @@
 
 function slick_gallery_acf() { // We create shortcode function & slick slider with testimonials
 
-	$out_slider = '<div class="Testimonials-slider">'. // Create start
+	$out_slider = '<div class="Testimonials-slider">'.
 
-		$rows = get_field('add_new_testimonials'); //Get array data
+		$rows = get_field('add_new_testimonials');
 
 		foreach ( $rows as $row ) {
 			$name = $row['name'];
 			$job = $row['job'];
 			$testimonial = $row['testimonial'];
+			$photo = $row['photo'];
 
 			$out_slider .= '
-				<div><blockquote>
+				<div><blockquote class="Testimonials-slide">
 
 					<div class="Testimonials-slide-left">
-       					<img alt="Isabelle Knudsen" class="Testimonials-avatar" src="https://cdn.and.co/marketing/images/2020/isabelle-knudsen.jpg">
+       					<img alt="'. $name .'" class="Testimonials-avatar" src="'. $photo .'">
         			</div>
         			<div class="Testimonials-content">
         				<img src="/wordpress/wp-content/uploads/2020/07/svgexport-13.svg">
@@ -23,7 +24,7 @@ function slick_gallery_acf() { // We create shortcode function & slick slider wi
         				<div class="Testimonials-name">'. $name .'</div>
         				<div class="Testimonials-position">'. $job .'</div>
         			</div>
-        			
+
         		</blockquote></div>';
 		}
 
